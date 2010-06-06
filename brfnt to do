@@ -1,0 +1,32 @@
+Things to do:
+
+
+TPL
+    Decode RGBA8
+    Encode all formats
+    
+    
+Display
+    Fonts tile to fit window width
+    
+    Checkboxes for displaying...
+        Char widths
+        
+
+Floating Panel
+    Scribble drawing
+    CWDH editing
+    Gylph Editing
+        
+
+Import
+Export
+
+
+New Font Generator
+    Char Range Selector
+    TPL Selector
+    Encoding Selector
+    
+    
+Saving!!!

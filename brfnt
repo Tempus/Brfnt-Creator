@@ -1,0 +1,83 @@
+# RFNT Header - Revolution FoNT
+{
+    int Magic           // Revolution FoNT
+    short VersionMajor  // 0xFFFE
+    short VersionMinor  // 0x0104
+    int Filesize        // Size of file in bytes
+    short HeaderLength  // 0x10
+    short ChunkCount    // ???
+}
+
+# FINF - Font INFormation
+{
+    int Magic           // Font INFormation
+    int HeaderLength    // 0x20
+    char fonttype       // ???
+    char leading        // Font Leading
+    short defaultchar   // Char returned for exceptions
+    char leftmargin     // 
+    char charwidth      // 
+    char fullwidth      // 
+    char Encoding       // In order - UTF-8, UTF-16, SJIS, CP1252, COUNT
+    int TGLPoffset      // 0x38
+    int CWDHoffset      // 0x38 + TGLP size
+    int CMAPoffset      // 0x38 + TGLP size + CWDH size
+    char height         // height
+    char width          // width
+    char ascent         // ascent
+    char pad            // pad (Or maybe descent ^_^ ?)
+}
+
+struct //header size is 0x30
+{
+    int Magic           //Texture Pallette Layer Graphics (in big endian)
+    int TGLPsize        //Size of the TGLP in bytes
+    char cellWidth
+    char cellHeight
+    char baseLinePos
+    char maxCharWidth
+    int texsize
+    short texNum
+    short texType
+    short charColumns
+    short charRows
+    short width
+    short height
+    int Offset          //Offset to first texture
+}
+
+
+
+
+Some TGLP textures
+
+
+
+struct //CWDH
+{
+    int Magic
+    int length
+    int NumEntries
+    int Padding?
+}
+
+struct //CWDH entries
+{
+    char unknown        // ???
+    char unknown        // ???
+    char unknown        // ???
+}
+
+
+struct //CMAP
+{
+    int Magic
+    int Length
+    short firstchar     // denotes the starting bound of all chars in the char map (inclusive)
+    short lastchar      // denotes the ending bound of all chars in the char map (inclusive)
+    short CMAPtype      // 0 is a sequential range, 1 is list for non-contiguous mappings
+    short padding
+    int OffsetToNextCMAPdata    
+    short TextureEntry  // If type is 0, sequential after this mark. If type is one, each character in the range will have an entry
+    short pad           // pads to 4 bytes if necessary
+}
