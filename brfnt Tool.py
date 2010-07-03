@@ -167,7 +167,7 @@ class Window(QtGui.QMainWindow):
         fn = str(fn)
         i = 0
 
-        with open(fn) as f:
+        with open(fn,'rb') as f:
             tmpf = f.read()
         f.close()
         
